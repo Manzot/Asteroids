@@ -27,8 +27,10 @@ public class Unit : MonoBehaviour, IManager
        
     }
 
+
     void Move (Vector2 dir)
     {
+
         rb.velocity = dir.normalized * speed;
     }
 }
