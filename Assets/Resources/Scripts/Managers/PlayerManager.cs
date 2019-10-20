@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerManager
 {
+    public Player player { get; set; }
     #region SINGLETON
     public static PlayerManager Instance
     {
@@ -21,22 +22,24 @@ public class PlayerManager
 
     public void Initialize()
     {
-
+        GameObject playerPrefab = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/Player"));
+        player = playerPrefab.GetComponent<Player>();
+        player.Initialize();
     }
 
     public void PostInitialize()
     {
-
+        player.PostInitialize();
     }
 
     public void Refresh()
     {
-
+        player.Refresh();
     }
 
     public void PhysicsRefresh()
     {
-
+        player.PhysicsRefresh();
     }
    
 

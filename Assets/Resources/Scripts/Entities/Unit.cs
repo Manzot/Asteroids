@@ -2,35 +2,47 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Unit : MonoBehaviour, IManager
+public class Unit : MonoBehaviour
 {
     Rigidbody2D rb;
     public float speed;
+    public float rotateSpeed;
 
-    public void Initialize()
+    public virtual void Initialize()
     {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void PhysicsRefresh()
+    public virtual void PostInitialize()
     {
-        
+
     }
 
-    public void PostInitialize()
-    {
-        
-    }
-
-    public void Refresh()
+    public virtual void Refresh()
     {
        
     }
 
-
-    void Move (Vector2 dir)
+    public virtual void PhysicsRefresh()
     {
+        
+    }
 
-        rb.velocity = dir.normalized * speed;
+
+    public void Move (Vector2 dir)
+    {
+        // rb.velocity = dir.normalized * speed * Time.deltaTime;
+        try
+        {
+            rb.AddForce(dir.normalized * speed * Time.deltaTime);
+        }
+        catch
+        {
+            Debug.Log(transform.name);
+        }
+    }
+    public void Rotate(float rDirection)
+    {
+        transform.Rotate(0, 0, rDirection * rotateSpeed * Time.deltaTime);
     }
 }

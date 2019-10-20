@@ -2,17 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AsteroidEnemy : MonoBehaviour
+public class AsteroidEnemy : Unit
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Initialize()
+    {
+        base.Initialize();
+    }
+
+    public override void PostInitialize()
+    {
+
+    }
+
+    public override void Refresh()
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void PhysicsRefresh()
     {
-        
+        Move(new Vector2(0.01f, 1f));
     }
 }
