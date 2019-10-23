@@ -7,10 +7,12 @@ public class Player : Unit
     public override void Initialize()
     {
         base.Initialize();
+        
     }
 
     public override void PostInitialize()
     {
+        
 
     }
 
@@ -22,7 +24,7 @@ public class Player : Unit
             Rotate(1);
         if (Input.GetKey(KeyCode.D))
             Rotate(-1);
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)) 
             BulletManager.Instance.CreateBullet(transform.position);
     }
 

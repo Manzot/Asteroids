@@ -7,6 +7,8 @@ TagManager:
   - Laser
   - Asteroid-Big
   - Asteroid-Small
+  - Enemy
+  - EnemyLaser
   layers:
   - Default
   - TransparentFX
@@ -21,8 +23,8 @@ TagManager:
   - SmallAsteroid
   - Laser
   - Player
-  - 
-  - 
+  - Enemy
+  - EnemyLaser
   - 
   - 
   - 
