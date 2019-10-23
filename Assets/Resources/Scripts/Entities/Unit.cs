@@ -31,18 +31,14 @@ public class Unit : MonoBehaviour
 
     public void Move (Vector2 dir)
     {
-        // rb.velocity = dir.normalized * speed * Time.deltaTime;
-        try
-        {
-            rb.AddForce(dir.normalized * speed * Time.deltaTime);
-        }
-        catch
-        {
-            Debug.Log(transform.name);
-        }
+        rb.AddForce(dir.normalized * speed * Time.deltaTime);
     }
-    public void Rotate(float rDirection)
+    public void Rotate(float rotateDir)
     {
-        transform.Rotate(0, 0, rDirection * rotateSpeed * Time.deltaTime);
+        transform.Rotate(0, 0, rotateDir * rotateSpeed * Time.fixedDeltaTime);
+    }
+    public void LaserShoot(Vector3 shootDir)
+    {
+        transform.position += shootDir.normalized * speed * Time.deltaTime;
     }
 }

@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Laser
+  - Asteroid-Big
+  - Asteroid-Small
   layers:
   - Default
   - TransparentFX
@@ -13,11 +16,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - EnemyShip
+  - BigAsteroid
+  - SmallAsteroid
+  - Laser
+  - Player
   - 
   - 
   - 

@@ -41,7 +41,5 @@ public class PlayerManager
     {
         player.PhysicsRefresh();
     }
-   
-
 
 }

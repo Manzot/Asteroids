@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class AsteroidEnemy : Unit
 {
+    Vector2 moveDir;
+    public bool bigAsteroid;
     public override void Initialize()
     {
         base.Initialize();
+        moveDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+       
     }
 
     public override void PostInitialize()
@@ -21,6 +25,18 @@ public class AsteroidEnemy : Unit
 
     public override void PhysicsRefresh()
     {
-        Move(new Vector2(0.01f, 1f));
+        Move(moveDir);
+        Rotate(Random.Range(-1,1));
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Laser"))
+        {
+            if (bigAsteroid)
+                EnemyManager.Instance.CreateSmallAsteroids(transform.position);
+            EnemyManager.Instance.DestroyEnemy(gameObject);
+            BulletManager.Instance.LaserDied(collision.gameObject.GetComponent<Laser>());
+        }
     }
 }

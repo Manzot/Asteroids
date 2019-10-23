@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class BulletManager
 {
+    public List<Laser> lasersList;
+    GameObject laserPrefab;
+    Transform laserParent;
     #region SINGLETON
     public static BulletManager Instance
     {
@@ -21,21 +24,92 @@ public class BulletManager
 
     public void Initialize()
     {
+        laserPrefab = Resources.Load<GameObject>("Prefabs/Laser");
+        laserParent = new GameObject("LaserParent").transform;
+        lasersList = new List<Laser>();
+        
 
+        foreach (Laser l in lasersList)
+        {
+            l.Initialize();
+        }
     }
 
     public void PostInitialize()
     {
-
+        foreach (Laser l in lasersList)
+        {
+            l.PostInitialize();
+        }
     }
 
     public void Refresh()
     {
-
+        foreach (Laser l in lasersList)
+        {
+            if (l.isActiveAndEnabled)
+                l.Refresh();
+        }
     }
 
     public void PhysicsRefresh()
     {
+        foreach (Laser l in lasersList)
+        {
+            
+            l.PhysicsRefresh();
+        }
+    }
 
+    public Laser CreateBullet(Vector2 location)
+    {
+        Laser laser = null;
+        if (lasersList.Count == 0)
+        {
+            laser = GameObject.Instantiate(laserPrefab, laserParent).GetComponent<Laser>();
+            lasersList.Add(laser);
+
+            laser.Initialize();
+            laser.PostInitialize();
+            lasersList.Add(laser);
+            return laser;
+        }
+        else
+        {
+            for (int i = 0; i < lasersList.Count; i++)
+            {
+                if (lasersList[i].gameObject.activeSelf)
+                {
+                    laser = GameObject.Instantiate(laserPrefab, laserParent).GetComponent<Laser>();
+                    lasersList.Add(laser);
+
+                    laser.Initialize();
+                    laser.PostInitialize();
+                    lasersList.Add(laser);
+                    return laser;
+                }
+                else
+                {
+                    int inactiveLaser = 0;
+                    for (int j = 0; j < lasersList.Count; j++)
+                    {
+                        if (!lasersList[j].gameObject.activeSelf)
+                            inactiveLaser = j;
+                    }
+                    lasersList[inactiveLaser].gameObject.SetActive(true);                    
+                    laser = lasersList[inactiveLaser].gameObject.GetComponent<Laser>();
+                    laser.Initialize();
+                    laser.PostInitialize();
+                    return laser;
+                }
+            }
+        }
+        return laser;
+
+    }
+    public void LaserDied(Laser l)
+    {
+        l.gameObject.SetActive(false);
+        //lasersList.Remove(l);
     }
 }
