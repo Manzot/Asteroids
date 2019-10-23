@@ -70,7 +70,7 @@ public class EnemyManager
 
     public void CreateSmallAsteroids(Vector2 location)
     {
-        int numOfAsteroids = Random.Range(2, 3);
+        int numOfAsteroids = Random.Range(2, 4);
         for (int i = 0; i < numOfAsteroids; i++)
         {
             GameObject go = GameObject.Instantiate(smallAsteroidPrefab, location + new Vector2(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f)), Quaternion.identity, asteroidParent);
