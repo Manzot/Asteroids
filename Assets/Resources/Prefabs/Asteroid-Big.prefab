@@ -96,6 +96,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   rotateSpeed: 40
+  points: 25
   bigAsteroid: 1
 --- !u!58 &878758391040189746
 CircleCollider2D:

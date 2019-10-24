@@ -202,7 +202,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 648791171}
+      - m_Target: {fileID: 803637378}
         m_MethodName: SoundButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -334,7 +334,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 648791171}
+      - m_Target: {fileID: 803637378}
         m_MethodName: StartButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -545,7 +545,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 803637378}
         m_MethodName: QuitButtonPressed
         m_Mode: 1
         m_Arguments:
@@ -555,7 +555,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &641405686
@@ -608,7 +608,6 @@ GameObject:
   - component: {fileID: 648791168}
   - component: {fileID: 648791167}
   - component: {fileID: 648791172}
-  - component: {fileID: 648791171}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -696,19 +695,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &648791171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 648791166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b873eb05f05c78646a0dcbd696d01a17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSources: []
 --- !u!81 &648791172
 AudioListener:
   m_ObjectHideFlags: 0
@@ -727,6 +713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 803637380}
   - component: {fileID: 803637379}
+  - component: {fileID: 803637378}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -734,6 +721,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &803637378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803637377}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b873eb05f05c78646a0dcbd696d01a17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSources: []
 --- !u!20 &803637379
 Camera:
   m_ObjectHideFlags: 0
@@ -1280,7 +1280,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d939e2b6d078b6843b8ddd77fa335725, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.04
   m_Pitch: 1
   Loop: 1
   Mute: 0

@@ -96,6 +96,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 100
   rotateSpeed: 100
+  points: 0
+  lives: 0
+  deathForce: 1
+  scores: 0
+  scoresText: {fileID: 0}
+  livesText: {fileID: 0}
 --- !u!50 &1581775878278520266
 Rigidbody2D:
   serializedVersion: 4

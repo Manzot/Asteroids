@@ -7,6 +7,7 @@ public class Unit : MonoBehaviour
     Rigidbody2D rb;
     public float speed;
     public float rotateSpeed;
+    public int points;
 
     public virtual void Initialize()
     {
@@ -20,16 +21,16 @@ public class Unit : MonoBehaviour
 
     public virtual void Refresh()
     {
-       
+
     }
 
     public virtual void PhysicsRefresh()
     {
-        
+
     }
 
 
-    public void Move (Vector2 dir)
+    public void Move(Vector2 dir)
     {
         rb.AddForce(dir.normalized * speed * Time.deltaTime);
     }

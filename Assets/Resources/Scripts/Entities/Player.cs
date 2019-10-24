@@ -1,9 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : Unit
 {
+    public int lives = 3;
+    [HideInInspector] public float deathForce = 1;
+    public int scores=0;
+    public Text scoresText;
+    public Text livesText;
     public override void Initialize()
     {
         base.Initialize();
@@ -12,7 +18,10 @@ public class Player : Unit
 
     public override void PostInitialize()
     {
-        
+        scores = 0;
+        lives = 3;
+        scoresText.text = "Scores: " + scores;
+        livesText.text = "Lives: " + lives;
 
     }
 
@@ -32,6 +41,26 @@ public class Player : Unit
     {
         //base.PhysicsRefresh();
         
+    }
+    public void AddPoints(int points)
+    {
+        scores += points;
+        scoresText.text = "Scores: " + scores;
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+       
+        if (collision.relativeVelocity.magnitude > deathForce && collision.gameObject.CompareTag("Asteroid-Big"))
+        {
+            Debug.Log("death");
+            lives--;
+            livesText.text = "Lives: " + lives;
+            if (lives <= 0)
+            {
+                Debug.Log("GAME OVER-FUCK OFF");
+            }
+        }
+
     }
 
 }

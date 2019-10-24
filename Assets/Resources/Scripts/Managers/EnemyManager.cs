@@ -80,11 +80,6 @@ public class EnemyManager
         }
     }
 
-    public void CreateBigAsteroid()
-    {
-
-    }
-
     public void DestroyEnemy(GameObject go)
     {
         go.SetActive(false);

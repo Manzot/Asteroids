@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerManager
 {
+ 
     public Player player { get; set; }
     #region SINGLETON
     public static PlayerManager Instance
@@ -41,5 +42,6 @@ public class PlayerManager
     {
         player.PhysicsRefresh();
     }
-
+    
+    
 }

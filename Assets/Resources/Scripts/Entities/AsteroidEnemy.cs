@@ -5,7 +5,9 @@ using UnityEngine;
 public class AsteroidEnemy : Unit
 {
     Vector2 moveDir;
+    GameObject player;
     public bool bigAsteroid;
+
     public override void Initialize()
     {
         base.Initialize();
@@ -15,7 +17,7 @@ public class AsteroidEnemy : Unit
 
     public override void PostInitialize()
     {
-
+        player = GameObject.FindWithTag("Player");
     }
 
     public override void Refresh()
@@ -33,8 +35,11 @@ public class AsteroidEnemy : Unit
     {
         if (collision.gameObject.CompareTag("Laser"))
         {
+            player.SendMessage("AddPoints", points);
             if (bigAsteroid)
-                EnemyManager.Instance.CreateSmallAsteroids(transform.position);
+            { EnemyManager.Instance.CreateSmallAsteroids(transform.position);
+                
+                    }
             EnemyManager.Instance.DestroyEnemy(gameObject);
             BulletManager.Instance.LaserDied(collision.gameObject.GetComponent<Laser>());
         }

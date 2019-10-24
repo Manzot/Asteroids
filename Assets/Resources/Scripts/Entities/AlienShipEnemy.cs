@@ -62,7 +62,9 @@ public class AlienShipEnemy : Unit
     {
         if (collision.gameObject.CompareTag("Laser"))
         {
+            player.SendMessage("AddPoints", points);
             EnemyManager.Instance.DestroyEnemy(gameObject);
+
             BulletManager.Instance.LaserDied(collision.gameObject.GetComponent<Laser>());
         }
     }
