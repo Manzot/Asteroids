@@ -74,7 +74,7 @@ public class BulletManager
             lasersList.Add(laser);
             return laser;
         }
-        else
+        else 
         {
             for (int i = 0; i < lasersList.Count; i++)
             {

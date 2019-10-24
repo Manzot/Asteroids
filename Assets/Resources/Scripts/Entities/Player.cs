@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Player : Unit
 {
+    public float spawnTime = 5f;
     public override void Initialize()
     {
         base.Initialize();
@@ -24,6 +25,13 @@ public class Player : Unit
             Rotate(-1);
         if (Input.GetKeyDown(KeyCode.Space))
             BulletManager.Instance.CreateBullet(transform.position);
+
+        
+        if(spawnTime <= 0)
+        {
+            PlayerManager.Instance.PlayerSpawn(gameObject);
+            spawnTime = 5f;
+        }
     }
 
     public override void PhysicsRefresh()
@@ -32,4 +40,11 @@ public class Player : Unit
         
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))// 13) //(13 for enemy)
+        {
+            PlayerManager.Instance.PlayerDied(gameObject);
+        }
+    }
 }

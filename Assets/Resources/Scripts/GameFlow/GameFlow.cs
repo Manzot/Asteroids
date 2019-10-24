@@ -15,31 +15,29 @@ public class GameFlow
 
     public void Initialize()
     {
-        EnemyManager.Instance.Initialize();
         PlayerManager.Instance.Initialize();
+        EnemyManager.Instance.Initialize(); 
         BulletManager.Instance.Initialize();
     }
 
     public void PostInitialize()
     {
-
-        EnemyManager.Instance.PostInitialize();
         PlayerManager.Instance.PostInitialize();
+        EnemyManager.Instance.PostInitialize();
         BulletManager.Instance.PostInitialize();
     }
 
     public void Refresh()
     {
-
-        EnemyManager.Instance.Refresh();
         PlayerManager.Instance.Refresh();
+        EnemyManager.Instance.Refresh();
         BulletManager.Instance.Refresh();
     }
 
     public void PhysicsRefresh()
     {
-        EnemyManager.Instance.PhysicsRefresh();
         PlayerManager.Instance.PhysicsRefresh();
+        EnemyManager.Instance.PhysicsRefresh(); 
         BulletManager.Instance.PhysicsRefresh();
     }
 }

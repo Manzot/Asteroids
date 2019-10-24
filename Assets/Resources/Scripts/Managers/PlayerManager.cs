@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerManager
 {
     public Player player { get; set; }
+    private float spawnTime = 5f;
+    InGameUI ui;
     #region SINGLETON
     public static PlayerManager Instance
     {
@@ -23,6 +25,7 @@ public class PlayerManager
     public void Initialize()
     {
         GameObject playerPrefab = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/Player"));
+        ui = GameObject.FindObjectOfType<InGameUI>();
         player = playerPrefab.GetComponent<Player>();
         player.Initialize();
     }
@@ -34,12 +37,39 @@ public class PlayerManager
 
     public void Refresh()
     {
-        player.Refresh();
+        if(player.isActiveAndEnabled)
+            player.Refresh();
+
+        IsPlayerDead();
     }
 
     public void PhysicsRefresh()
     {
         player.PhysicsRefresh();
+    }
+
+    public void PlayerDied(GameObject go)
+    {
+        ui._score = 0;
+        go.SetActive(false);
+        
+    }
+    public void PlayerSpawn(GameObject go)
+    {
+        go.SetActive(true);
+    }
+
+    public void IsPlayerDead()
+    {
+        if (!player.isActiveAndEnabled)
+            spawnTime -= Time.deltaTime;
+        if (spawnTime <= 0)
+        {
+            PlayerSpawn(player.gameObject);
+            player.transform.position = new Vector2(0, 0);
+            player.transform.rotation = Quaternion.Euler(Vector3.zero);
+            spawnTime = 5f;
+        }
     }
 
 }

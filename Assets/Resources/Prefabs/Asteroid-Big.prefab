@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 878758391040189749}
   - component: {fileID: 878758391040189746}
   - component: {fileID: -177190154987128725}
-  m_Layer: 9
+  m_Layer: 13
   m_Name: Asteroid-Big
   m_TagString: Asteroid-Big
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afb7835ee903bdc4ea0df5074b8f29a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 100
+  speed: 2
   rotateSpeed: 40
   bigAsteroid: 1
 --- !u!58 &878758391040189746

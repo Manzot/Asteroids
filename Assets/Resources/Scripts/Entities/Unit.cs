@@ -28,10 +28,10 @@ public class Unit : MonoBehaviour
         
     }
 
-
     public void Move (Vector2 dir)
     {
-        rb.AddForce(dir.normalized * speed * Time.deltaTime);
+        //rb.AddForce(dir.normalized * speed * Time.fixedDeltaTime, ForceMode2D.Impulse);
+        rb.AddForce(dir.normalized * speed );
     }
     public void Rotate(float rotateDir)
     {

@@ -10,7 +10,6 @@ public class AsteroidEnemy : Unit
     {
         base.Initialize();
         moveDir = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-       
     }
 
     public override void PostInitialize()

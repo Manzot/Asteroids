@@ -19,8 +19,8 @@ public class MapPositionChanger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.gameObject.CompareTag("Laser"))
-        {
+       // if (!other.gameObject.CompareTag("Laser"))
+       // {
             if (other.gameObject.transform.position.y > coli.bounds.max.y)
                 other.gameObject.transform.position = new Vector2(other.gameObject.transform.position.x, coli.bounds.min.y);
             if (other.gameObject.transform.position.y < coli.bounds.min.y)
@@ -30,8 +30,7 @@ public class MapPositionChanger : MonoBehaviour
                 other.gameObject.transform.position = new Vector2(coli.bounds.min.x, other.gameObject.transform.position.y);
             if (other.gameObject.transform.position.x < coli.bounds.min.x)
                 other.gameObject.transform.position = new Vector2(coli.bounds.max.x, other.gameObject.transform.position.y);
-        }
+        //  }
         
-
     }
 }
