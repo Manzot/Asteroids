@@ -27,7 +27,7 @@ public class BulletManager
         laserPrefab = Resources.Load<GameObject>("Prefabs/Laser");
         laserParent = new GameObject("LaserParent").transform;
         lasersList = new List<Laser>();
-        
+
 
         foreach (Laser l in lasersList)
         {
@@ -56,7 +56,7 @@ public class BulletManager
     {
         foreach (Laser l in lasersList)
         {
-            
+
             l.PhysicsRefresh();
         }
     }
@@ -74,11 +74,11 @@ public class BulletManager
             lasersList.Add(laser);
             return laser;
         }
-        else 
+        else
         {
-            for (int i = 0; i < lasersList.Count; i++)
+            foreach (Laser l in lasersList)
             {
-                if (lasersList[i].gameObject.activeSelf)
+                if (l.gameObject.activeSelf)
                 {
                     laser = GameObject.Instantiate(laserPrefab, laserParent).GetComponent<Laser>();
                     lasersList.Add(laser);
@@ -96,7 +96,7 @@ public class BulletManager
                         if (!lasersList[j].gameObject.activeSelf)
                             inactiveLaser = j;
                     }
-                    lasersList[inactiveLaser].gameObject.SetActive(true);                    
+                    lasersList[inactiveLaser].gameObject.SetActive(true);
                     laser = lasersList[inactiveLaser].gameObject.GetComponent<Laser>();
                     laser.Initialize();
                     laser.PostInitialize();
