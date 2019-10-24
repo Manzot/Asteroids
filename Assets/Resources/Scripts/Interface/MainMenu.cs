@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartButtonPressed()
     {
-        SceneManager.LoadScene("LevelOne");
+        SceneManager.LoadScene("SampleScene");
     }
     public void SoundButtonPressed()
     {

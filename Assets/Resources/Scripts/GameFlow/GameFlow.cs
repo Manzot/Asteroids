@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameFlow 
+public class GameFlow
 {
     // Start is called before the first frame update
     #region Singleton
-    public static GameFlow Instance { get { return instance ??(instance = new GameFlow()); } }
+    public static GameFlow Instance { get { return instance ?? (instance = new GameFlow()); } }
 
     private static GameFlow instance;
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerManager
 {
+ 
     public Player player { get; set; }
     private float spawnTime = 5f;
     InGameUI ui;

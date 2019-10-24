@@ -10,6 +10,9 @@ public class EnemyManager
     public List<AlienShipEnemy> alienShipList;
     GameObject asteroidPrefab;
     GameObject smallAsteroidPrefab;
+    GameObject alienShipPrefab;
+
+    Transform alienShipParent;
     Transform asteroidParent;
     Collider2D world;
     int randNumEnemies;
@@ -19,7 +22,8 @@ public class EnemyManager
     public static EnemyManager Instance
     {
 
-        get {
+        get
+        {
             return instance ?? (instance = new EnemyManager());
         }
 
@@ -41,12 +45,15 @@ public class EnemyManager
         RandomEnemySpawner(3, 6);
 
     }
-
     public void PostInitialize()
     {
         foreach (AsteroidEnemy ae in asteroidsList)
         {
             ae.PostInitialize();
+        }
+        foreach (AlienShipEnemy ase in alienShipList)
+        {
+            ase.PostInitialize();
         }
     }
 
@@ -68,6 +75,10 @@ public class EnemyManager
         {
             ae.PhysicsRefresh();
         }
+        foreach (AlienShipEnemy ase in alienShipList)
+        {
+            ase.PhysicsRefresh();
+        }
     }
 
    public void CreateBigAsteroid(Vector2 _pos)
@@ -85,7 +96,7 @@ public class EnemyManager
             GameObject go = GameObject.Instantiate(smallAsteroidPrefab, location + new Vector2(Random.Range(-0.8f, 0.8f), Random.Range(-0.8f, 0.8f)), Quaternion.identity, asteroidParent);
             asteroidsList.Add(go.GetComponent<AsteroidEnemy>());
             go.GetComponent<AsteroidEnemy>().Initialize();
-            go.GetComponent<AsteroidEnemy>().PostInitialize();      
+            go.GetComponent<AsteroidEnemy>().PostInitialize();
         }
     }
 
