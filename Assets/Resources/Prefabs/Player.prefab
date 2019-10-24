@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1581775878278520270}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,7 +96,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   rotateSpeed: 250
-  spawnTime: 5
+  points: 0
+  spawnTime: 1
+  lives: 3
+  deathForce: 1
+  scores: 0
+  scoresText: {fileID: 0}
+  livesText: {fileID: 0}
 --- !u!50 &1581775878278520266
 Rigidbody2D:
   serializedVersion: 4

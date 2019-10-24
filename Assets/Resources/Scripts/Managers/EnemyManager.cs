@@ -8,6 +8,7 @@ public class EnemyManager
 {
     public List<AsteroidEnemy> asteroidsList;
     public List<AlienShipEnemy> alienShipList;
+
     GameObject asteroidPrefab;
     GameObject smallAsteroidPrefab;
     GameObject alienShipPrefab;
@@ -18,6 +19,7 @@ public class EnemyManager
     int randNumEnemies;
     Vector2 randomPos;
     InGameUI ui;
+  
     #region SINGLETON
     public static EnemyManager Instance
     {
@@ -35,21 +37,52 @@ public class EnemyManager
 
     public void Initialize()
     {
+        ui = GameObject.FindObjectOfType<InGameUI>();
+
+        AstroidsSpawnner();
+        AlienShipSpawnner();
+
+        foreach (AsteroidEnemy ae in asteroidsList)
+        {
+            ae.Initialize();
+        }
+        foreach (AlienShipEnemy ase in alienShipList)
+        {
+            ase.Initialize();
+        }
+    }
+
+    private void AstroidsSpawnner()
+    {
+        
         asteroidPrefab = Resources.Load<GameObject>("Prefabs/Asteroid-Big");
         smallAsteroidPrefab = Resources.Load<GameObject>("Prefabs/Asteroid-Small");
         world = GameObject.FindObjectOfType<MapPositionChanger>().GetComponent<Collider2D>();
-        ui = GameObject.FindObjectOfType<InGameUI>();
+
         asteroidParent = new GameObject("AsteroidParent").transform;
         asteroidsList = new List<AsteroidEnemy>();
-      
-        RandomEnemySpawner(3, 6);
 
+        RandomEnemySpawner(3, 6);
     }
+    public void AlienShipSpawnner()
+    {
+        alienShipPrefab = Resources.Load<GameObject>("Prefabs/AlienShip");
+        alienShipList = new List<AlienShipEnemy>();
+        alienShipParent = new GameObject("AlienShipParent").transform;
+        alienShipParent.position = new Vector2(Random.Range(-9, 9), Random.Range(-5.30f, 5.30f));
+        GameObject.Instantiate(alienShipPrefab, alienShipParent);
+        alienShipList.AddRange(GameObject.FindObjectsOfType<AlienShipEnemy>());
+    }
+
     public void PostInitialize()
     {
         foreach (AsteroidEnemy ae in asteroidsList)
         {
             ae.PostInitialize();
+        }
+        foreach (AlienShipEnemy ase in alienShipList)
+        {
+            ase.PostInitialize();
         }
     }
 
@@ -63,6 +96,10 @@ public class EnemyManager
         {
             RandomEnemySpawner(3, 6);
         }
+        foreach (AlienShipEnemy ase in alienShipList)
+        {
+            ase.Refresh();
+        }
     }
 
     public void PhysicsRefresh()
@@ -70,6 +107,10 @@ public class EnemyManager
         foreach (AsteroidEnemy ae in asteroidsList)
         {
             ae.PhysicsRefresh();
+        }
+        foreach (AlienShipEnemy ase in alienShipList)
+        {
+            ase.PhysicsRefresh();
         }
     }
 
@@ -92,17 +133,16 @@ public class EnemyManager
         }
     }
 
-    public void CreateAlienShip()
-    {
-
-    }
 
     public void DestroyEnemy(GameObject go)
     {
         //go.SetActive(false);
         ui._score += 10;
         asteroidsList.Remove(go.GetComponent<AsteroidEnemy>());
+        alienShipList.Remove(go.GetComponent<AlienShipEnemy>());
+
         GameObject.Destroy(go);     
+
     }
 
     public void RandomEnemySpawner(int min, int max)
@@ -120,3 +160,4 @@ public class EnemyManager
     
 
 }
+

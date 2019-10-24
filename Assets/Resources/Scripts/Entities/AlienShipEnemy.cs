@@ -5,7 +5,7 @@ using UnityEngine;
 public class AlienShipEnemy : Unit
 {
     Vector2 moveDir;
-    Transform player;
+    Player player;
 
     float lastShot = 0;
     float shotDelay = 2f;
@@ -21,7 +21,7 @@ public class AlienShipEnemy : Unit
 
     public override void PostInitialize()
     {
-        player = GameObject.FindWithTag("Player").transform;
+        player = FindObjectOfType<Player>();
 
     }
 
@@ -44,7 +44,7 @@ public class AlienShipEnemy : Unit
 
     private Quaternion FindTarget()
     {
-        dir = (player.position - transform.position).normalized;
+        dir = (player.transform.position - transform.position).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90f;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = q;
@@ -53,7 +53,7 @@ public class AlienShipEnemy : Unit
 
     public override void PhysicsRefresh()
     {
-
+       
         Move(moveDir);
 
     }
@@ -62,7 +62,7 @@ public class AlienShipEnemy : Unit
     {
         if (collision.gameObject.CompareTag("Laser"))
         {
-            player.SendMessage("AddPoints", points);
+            
             EnemyManager.Instance.DestroyEnemy(gameObject);
 
             BulletManager.Instance.LaserDied(collision.gameObject.GetComponent<Laser>());

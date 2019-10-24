@@ -11,6 +11,7 @@ public class MainEntry : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         GameFlow.Instance.PostInitialize();
     }
 
