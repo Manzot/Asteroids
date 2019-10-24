@@ -51,10 +51,6 @@ public class EnemyManager
         {
             ae.PostInitialize();
         }
-        foreach (AlienShipEnemy ase in alienShipList)
-        {
-            ase.PostInitialize();
-        }
     }
 
     public void Refresh()
@@ -74,10 +70,6 @@ public class EnemyManager
         foreach (AsteroidEnemy ae in asteroidsList)
         {
             ae.PhysicsRefresh();
-        }
-        foreach (AlienShipEnemy ase in alienShipList)
-        {
-            ase.PhysicsRefresh();
         }
     }
 

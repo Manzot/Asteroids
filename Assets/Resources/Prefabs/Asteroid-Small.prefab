@@ -96,7 +96,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   rotateSpeed: 40
-  points: 50
   bigAsteroid: 0
 --- !u!50 &7200340679500705178
 Rigidbody2D:

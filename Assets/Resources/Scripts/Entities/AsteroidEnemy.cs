@@ -34,11 +34,11 @@ public class AsteroidEnemy : Unit
     {
         if (collision.gameObject.CompareTag("Laser"))
         {
-            player.SendMessage("AddPoints", points);
+          //  player.SendMessage("AddPoints", points);
             if (bigAsteroid)
-            { EnemyManager.Instance.CreateSmallAsteroids(transform.position);
-                
-                    }
+            {
+                EnemyManager.Instance.CreateSmallAsteroids(transform.position);
+            }
             EnemyManager.Instance.DestroyEnemy(gameObject);
             BulletManager.Instance.LaserDied(collision.gameObject.GetComponent<Laser>());
         }

@@ -19,10 +19,10 @@ public class Player : Unit
 
     public override void PostInitialize()
     {
-        scores = 0;
-        lives = 3;
-        scoresText.text = "Scores: " + scores;
-        livesText.text = "Lives: " + lives;
+       // scores = 0;
+       // lives = 3;
+       // scoresText.text = "Scores: " + scores;
+       //livesText.text = "Lives: " + lives;
 
     }
 
@@ -49,26 +49,6 @@ public class Player : Unit
     {
         //base.PhysicsRefresh();
         
-    }
-    public void AddPoints(int points)
-    {
-        scores += points;
-        scoresText.text = "Scores: " + scores;
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-       
-        if (collision.relativeVelocity.magnitude > deathForce && collision.gameObject.CompareTag("Asteroid-Big"))
-        {
-            Debug.Log("death");
-            lives--;
-            livesText.text = "Lives: " + lives;
-            if (lives <= 0)
-            {
-                Debug.Log("GAME OVER-FUCK OFF");
-            }
-        }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
