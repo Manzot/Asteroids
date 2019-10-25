@@ -24,6 +24,12 @@ public class Laser : Unit
     public override void Refresh()
     {
         LaserShoot(startPos);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
+        Debug.DrawRay(transform.position, transform.up, Color.red, 5f);
+        if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+        {
+            Debug.Log("hit");
+        }
         counter -= Time.deltaTime;
         if(counter <= 0)
         {
