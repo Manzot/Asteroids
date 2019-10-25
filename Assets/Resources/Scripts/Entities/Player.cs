@@ -35,7 +35,7 @@ public class Player : Unit
         if (Input.GetKey(KeyCode.D))
             Rotate(-1);
         if (Input.GetKeyDown(KeyCode.Space)) 
-            BulletManager.Instance.CreateBullet(transform.position);
+            BulletManager.Instance.CreateBullet(transform);
 
         
         if(spawnTime <= 0)

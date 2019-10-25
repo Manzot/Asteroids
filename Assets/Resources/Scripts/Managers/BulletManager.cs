@@ -61,12 +61,12 @@ public class BulletManager
         }
     }
 
-    public Laser CreateBullet(Vector2 location)
+    public Laser CreateBullet(Transform t)
     {
         Laser laser = null;
         if (lasersList.Count == 0)
         {
-            laser = GameObject.Instantiate(laserPrefab, laserParent).GetComponent<Laser>();
+            laser = GameObject.Instantiate(laserPrefab, t.position, t.rotation,  laserParent).GetComponent<Laser>();
             lasersList.Add(laser);
 
             laser.Initialize();
@@ -80,7 +80,7 @@ public class BulletManager
             {
                 if (l.gameObject.activeSelf)
                 {
-                    laser = GameObject.Instantiate(laserPrefab, laserParent).GetComponent<Laser>();
+                    laser = GameObject.Instantiate(laserPrefab, t.position, t.rotation, laserParent).GetComponent<Laser>();
                     lasersList.Add(laser);
 
                     laser.Initialize();
@@ -97,7 +97,10 @@ public class BulletManager
                             inactiveLaser = j;
                     }
                     lasersList[inactiveLaser].gameObject.SetActive(true);
+                    
                     laser = lasersList[inactiveLaser].gameObject.GetComponent<Laser>();
+                    laser.transform.position = t.position;
+                    laser.transform.rotation = t.rotation;
                     laser.Initialize();
                     laser.PostInitialize();
                     return laser;
