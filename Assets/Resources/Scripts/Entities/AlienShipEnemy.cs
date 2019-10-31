@@ -34,7 +34,8 @@ public class AlienShipEnemy : Unit
 
             // go = GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/AlienLaser"), transform.position, q);
             //go.GetComponent<Rigidbody2D>().AddRelativeForce(new Vector2(0f, bulletSpeed));
-            BulletManager.Instance.CreateBullet(transform);
+            GameObject laser = BulletManager.Instance.CreateBullet(transform, Color.blue).gameObject;
+            laser.gameObject.layer = LayerMask.NameToLayer("EnemyLaser");
             lastShot = Time.time;
 
             //Destroy(go, 3f);
@@ -61,12 +62,12 @@ public class AlienShipEnemy : Unit
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Laser"))
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Laser"))
         {
             
-           // EnemyManager.Instance.DestroyEnemy(gameObject);
+            EnemyManager.Instance.DestroyEnemy(gameObject);
 
-            //BulletManager.Instance.LaserDied(collision.gameObject.GetComponent<Laser>());
+            BulletManager.Instance.LaserDied(collision.gameObject.GetComponent<Laser>());
         }
     }
 

@@ -34,8 +34,8 @@ public class Player : Unit
             Rotate(1);
         if (Input.GetKey(KeyCode.D))
             Rotate(-1);
-        if (Input.GetKeyDown(KeyCode.Space)) 
-            BulletManager.Instance.CreateBullet(transform);
+        if (Input.GetKeyDown(KeyCode.Space))
+            BulletManager.Instance.CreateBullet(transform, Color.white).gameObject.layer = LayerMask.NameToLayer("Laser");
 
         
         if(spawnTime <= 0)

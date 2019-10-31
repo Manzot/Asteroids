@@ -30,17 +30,17 @@ public class AsteroidEnemy : Unit
         Rotate(Random.Range(-1,1));
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.CompareTag("Laser"))
-        {
-          //  player.SendMessage("AddPoints", points);
-            if (bigAsteroid)
-            {
-               // EnemyManager.Instance.CreateSmallAsteroids(transform.position);
-            }
-           // EnemyManager.Instance.DestroyEnemy(gameObject);
-            //BulletManager.Instance.LaserDied(collision.gameObject.GetComponent<Laser>());
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Laser"))
+    //    {
+    //      //  player.SendMessage("AddPoints", points);
+    //        if (bigAsteroid)
+    //        {
+    //           // EnemyManager.Instance.CreateSmallAsteroids(transform.position);
+    //        }
+    //       // EnemyManager.Instance.DestroyEnemy(gameObject);
+    //        //BulletManager.Instance.LaserDied(collision.gameObject.GetComponent<Laser>());
+    //    }
+    //}
 }

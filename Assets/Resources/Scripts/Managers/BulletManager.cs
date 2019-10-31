@@ -61,14 +61,15 @@ public class BulletManager
         }
     }
 
-    public Laser CreateBullet(Transform t)
+    public Laser CreateBullet(Transform t, Color c)
     {
+        
         Laser laser = null;
         if (lasersList.Count == 0)
         {
-            laser = GameObject.Instantiate(laserPrefab, t.position, t.rotation,  laserParent).GetComponent<Laser>();
+            laser = GameObject.Instantiate(laserPrefab, t.position, t.rotation,  laserParent).GetComponent<Laser>(); 
             lasersList.Add(laser);
-
+            laser.GetComponent<SpriteRenderer>().color = c;
             laser.Initialize();
             laser.PostInitialize();
             lasersList.Add(laser);
@@ -82,7 +83,7 @@ public class BulletManager
                 {
                     laser = GameObject.Instantiate(laserPrefab, t.position, t.rotation, laserParent).GetComponent<Laser>();
                     lasersList.Add(laser);
-
+                    laser.GetComponent<SpriteRenderer>().color = c;
                     laser.Initialize();
                     laser.PostInitialize();
                     lasersList.Add(laser);
@@ -99,6 +100,7 @@ public class BulletManager
                     lasersList[inactiveLaser].gameObject.SetActive(true);
                     
                     laser = lasersList[inactiveLaser].gameObject.GetComponent<Laser>();
+                    laser.GetComponent<SpriteRenderer>().color = c;
                     laser.transform.position = t.position;
                     laser.transform.rotation = t.rotation;
                     laser.Initialize();
@@ -115,4 +117,8 @@ public class BulletManager
         l.gameObject.SetActive(false);
         //lasersList.Remove(l);
     }
+
+  
+
+
 }

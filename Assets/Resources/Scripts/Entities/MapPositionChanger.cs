@@ -31,6 +31,5 @@ public class MapPositionChanger : MonoBehaviour
             if (other.gameObject.transform.position.x < coli.bounds.min.x)
                 other.gameObject.transform.position = new Vector2(coli.bounds.max.x, other.gameObject.transform.position.y);
         //  }
-        
     }
 }
